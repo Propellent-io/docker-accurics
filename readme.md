@@ -17,4 +17,27 @@ In a Gitlab CI workflow you can use this container within an IaC repository like
 **.gitlab-ci.yml**
 ```
 
+stages:
+  - test
+
+default:
+  image: ghcr.io/briansidebotham/accurics-terrascan:ac-1.0.33-ts-1.13.1
+  tags:
+    - docker
+  before_script:
+    - 'echo "Accurics: $(accurics version)"'
+    - 'echo "Terrascan: $(terrascan version)"'
+
+scan-code:
+  stage: test
+  artifacts:
+    when: always
+    paths:
+      - accurics_report.html
+      - accurics_report.json
+  script:
+    - cd ${CI_PROJECT_DIR}
+    - accurics scan -mode=pipeline -appurl=https://cloud.tenable.com/cns -token=${ACCURICS_TOKEN}
 ```
+
+Where accurics token will be the token value required to upload data.
