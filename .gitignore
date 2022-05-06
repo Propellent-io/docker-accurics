@@ -1,3 +1,6 @@
 .*
 !.github
 !.gitignore
+accurics_linux
+terraform_*_linux_*.zip
+terrascan_*_Linux_*.tar.gz
