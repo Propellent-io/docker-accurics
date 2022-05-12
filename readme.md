@@ -115,7 +115,7 @@ jobs:
       - name: Accurics Plan
         run: |
           export TF_VAR_environment=staging
-          git config --global --add safe.directory /__w/tenable-cs-remote-terraform-s3-state-cli/tenable-cs-remote-terraform-s3-state-cli
+          git config --global --add safe.directory /__w/$(basename ${GITHUB_REPOSITORY})/$(basename ${GITHUB_REPOSITORY})
           accurics version
           accurics plan -mode=pipeline -project=5e580a6c-b35a-4325-90bb-7d085de5eca0 -appurl="https://cloud.tenable.com/cns" -token="${{ secrets.ACCURICS_API_KEY }}" -planjson=plan.json --pulltfstate -cloudscan
 ```
