@@ -19,7 +19,7 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
   # The Terraform version we're releasing
-  TERRAFORM_VERSION: "1.1.8"
+  TERRAFORM_VERSION: "1.1.9"
   ACCURICS_VERSION: "1.0.36"
   TERRASCAN_VERSION: "1.14.0"
 
